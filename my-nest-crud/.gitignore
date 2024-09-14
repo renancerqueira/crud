@@ -4,6 +4,7 @@
 /dist
 /node_modules
 /build
+swagger-spec.json
 
 # Logs
 logs
