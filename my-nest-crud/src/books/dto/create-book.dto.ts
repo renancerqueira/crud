@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateBookDto {
+export class BookDto {
   @ApiProperty({
     description: 'Título do livro',
     example: 'Clean Code',
@@ -16,14 +16,14 @@ export class CreateBookDto {
   @ApiProperty({
     description: 'Descrição do livro',
     example: 'Um livro sobre boas práticas de desenvolvimento de software.',
-    required: false, // Este campo não é obrigatório
+    required: false,
   })
   readonly description?: string;
 
   @ApiProperty({
     description: 'Data de publicação',
     example: '2021-06-15T00:00:00.000Z',
-    required: false, // Este campo não é obrigatório
+    required: false,
   })
   readonly publishedDate?: Date;
 }

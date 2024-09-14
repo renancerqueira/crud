@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Get, Param, Put, Delete, UseGuards } from '@nestjs/common';
 import { BooksService } from './books.service';
-import { CreateBookDto } from './dto/create-book.dto';
+import { BookDto } from './dto/create-book.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiBearerAuth } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
@@ -13,14 +13,14 @@ export class BooksController {
 
   @Post()
   @ApiOperation({ summary: 'Criar um novo livro' })
-  @ApiBody({ type: CreateBookDto })
+  @ApiBody({ type: BookDto })
   @ApiResponse({
     status: 201,
     description: 'Livro criado com sucesso.',
-    type: CreateBookDto
+    type: BookDto
   })
   @ApiResponse({ status: 400, description: 'Dados inválidos.' })
-  create(@Body() createBookDto: CreateBookDto) {
+  create(@Body() createBookDto: BookDto) {
     return this.booksService.create(createBookDto);
   }
 
@@ -29,7 +29,7 @@ export class BooksController {
   @ApiResponse({
     status: 200,
     description: 'Lista de livros retornada com sucesso.',
-    type: [CreateBookDto],
+    type: [BookDto],
     example: [
       {
         title: 'Clean Code',
@@ -54,7 +54,7 @@ export class BooksController {
   @ApiResponse({
     status: 200,
     description: 'Livro encontrado com sucesso.',
-    type: CreateBookDto
+    type: BookDto
   })
   findOne(@Param('id') id: string) {
     return this.booksService.findOne(id);
@@ -65,9 +65,9 @@ export class BooksController {
   @ApiResponse({
     status: 200,
     description: 'Livro atualizado com sucesso.',
-    type: CreateBookDto
+    type: BookDto
   })
-  update(@Param('id') id: string, @Body() createBookDto: CreateBookDto) {
+  update(@Param('id') id: string, @Body() createBookDto: BookDto) {
     return this.booksService.update(id, createBookDto);
   }
 
