@@ -7,7 +7,7 @@ import { BooksModule } from './books/books.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://root:password@localhost:27017/books?authSource=admin'),
+    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://root:password@localhost:27017/books?authSource=admin'),
     UsersModule,
     AuthModule,
     BooksModule
