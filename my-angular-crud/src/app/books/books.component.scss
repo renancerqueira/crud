@@ -1,0 +1,25 @@
+.book-form-container {
+    margin: 20px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .book-description {
+      height: 1em;
+    }
+    
+    form button {
+      margin: -1.5em 10px 0 0;
+    }
+    
+    mat-form-field {
+      margin-right: 10px;
+    }
+  }
+  
+  .book-list-container {
+    margin: 20px 100px;
+    table {
+      width: 100%;
+    }
+  }
