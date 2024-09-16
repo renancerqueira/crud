@@ -6,7 +6,7 @@ services:
     ports:
       - "3000:3000" # Porta onde a API estará rodando
     environment:
-      - JWT_SECRET=yourSecretKey
+      - JWT_SECRET=jwtSecretKey
       - MONGO_URI=mongodb://root:password@mongo:27017/mydb?authSource=admin
     depends_on:
       - mongo
