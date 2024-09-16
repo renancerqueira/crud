@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { ApiService } from '../../services/api.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -16,24 +17,26 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ]
 })
 export class LoginComponent {
-  email: string = '';
+  username: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   onLogin() {
-    this.authService.login(this.email, this.password).subscribe({
+    this.apiService.login({ username: this.username, password: this.password }).subscribe({
       next: (response) => {
         localStorage.setItem('access_token', response.access_token);
         this.router.navigate(['/books']);
-      },
-      error: (error) => {
-        console.error('Erro ao fazer login', error);
       }
     });
+  }
+
+  register() {
+    this.router.navigate(['/register']);
   }
 }
