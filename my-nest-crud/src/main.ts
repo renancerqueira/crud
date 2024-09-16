@@ -24,6 +24,13 @@ async function bootstrap() {
     res.sendFile(swaggerSpecPath);
   });
 
+  // Habilitando o CORS
+  app.enableCors({
+    origin: 'http://localhost:4200', // Permitir apenas o front-end Angular
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
+
   await app.listen(3000);
 }
 bootstrap();
